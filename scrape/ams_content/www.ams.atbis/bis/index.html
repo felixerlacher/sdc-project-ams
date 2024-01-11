@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+<meta name="Description" CONTENT="Im AMS Berufsinformationssystem finden Sie umfangreiche Informationen zu Berufen, Lehrberufen und Koompetenzen.">
+
+
+<meta name="Keywords" CONTENT="Berufsuche, Berufsbeschreibung, Kompetenzen, Fähigkeiten, Interessen, Einstiegsgehalt, Lohn, Stellenangebote, Einkommen, Lehrberufe, Lehre">
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; base-uri 'self'; form-action 'self'">
+
+
+
+
+<title data-bind="text: page_title">AMS Berufsinformationssystem</title>
+<link rel="shortcut icon" href="/bis/images/ams_favicon.ico" type="image/x-icon">
+
+<script>var require = { waitSeconds: 180 };</script>
+<script>var application_path = '/bis';</script>
+<script async="" data-main="/bis/javascript/app" src="/bis/javascript/lib/require-2.3.6.min.js"></script>
+
+<link href="/bis/vendor/FontAwesome/css/all.css" rel="stylesheet" type="text/css">
+<link href="/bis/css/ams-main.css" rel="stylesheet" type="text/css">
+<link href="/bis/css/ams-main-contrib-fwd.css" rel="stylesheet" type="text/css">
+<link href="/bis/css/main.css" rel="stylesheet" type="text/css">
+
+
+
+</head>
+<body class="page-wrapper-startseite">
+<header class="ams-l-header" id="ams-navigation">
+    <div class="ams-l-header__top-area">
+        <div class="ams-l-header__centering-container">
+            <div class="ams-m-header-bar" id="header-bar">
+                <a href="https://www.ams.at/arbeitsuchende/aus-und-weiterbildung" target="_blank" class="ams-logo"
+                   title="Zur AMS Homepage">
+                    <img src="/bis/images/redesign/ams_logo.svg"
+                         class="ams-m-header-bar__logo"
+                         alt="AMS Logo">
+                </a>
+                <a href="/bis/index.php" class="header-title">Berufsinformationssystem</a>
+
+				
+				
+                <div class="ams-m-accessible-menu">
+                    <button id="schriftgroesse-standard" class="ams-e-button ams-e-button--tertiary ams-m-accessible-menu__button ams-m-accessible-menu--active" type="button" title="Standard Schriftgröße" tabindex="0">A</button>
+                    <button id="schriftgroesse-mittel" class="ams-e-button ams-e-button--tertiary ams-m-accessible-menu__button ams-m-accessible-menu__middle" type="button" title="Mittlere Schriftgröße" tabindex="0">A</button>
+                    <button id="schriftgroesse-gross" class="ams-e-button ams-e-button--tertiary ams-m-accessible-menu__button ams-m-accessible-menu__big" type="button" title="Größte Schriftgröße" tabindex="0">A</button>
+                </div>
+                <div id="widget" class="karrierekompass-widget-wrapper">
+                    <a tabindex="0" href="https://www.karrierekompass.at" id="widget_link" target="_blank" title="Zum Karrierekompass">
+                        <img src="/bis/images/redesign/kk-logo.svg" width="147" height="53" alt="Karrierekompass Logo">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ams-l-header__bottom-area">
+        <div class="ams-l-header__centering-container" id="main-menu">
+            <nav class="ams-m-navigation-bar" id="main-menu-nav" aria-label="Menü">
+    <ul class="ams-m-navigation-bar__nav" role="menubar" tabindex="0" id="main-menu-ul">
+
+        <li class="ams-m-navigation-bar__nav-item " role="menuitem"
+            style="min-width: 9em;width:100%;max-width:9em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               title="Führt Sie zu einer Liste aller Berufsprofile (alphabetisch oder nach Berufsgruppen gegliedert)."
+               href="/bis/berufe">Berufsprofile
+            </a>
+        </li>
+
+        <li class="ams-m-navigation-bar__nav-item " role="menuitem"
+            style="min-width: 11em;width:100%;max-width:11em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               title="Führt Sie zu einer Liste aller Lehrausbildungen (alphabetisch oder nach Berufsgruppen gegliedert)."
+               href="/bis/lehrberufe">Lehrausbildungen
+            </a>
+        </li>
+
+        <li class="ams-m-navigation-bar__nav-item " role="menuitem"
+            style="min-width:9.3em;width:100%;max-width:13.5em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               title="Führt Sie zu einer Liste aller Kompetenzen (alphabetisch oder nach Kompetenzbereichen gegliedert)"
+               href="/bis/kompetenzen">Berufliche Kompetenzen
+            </a>
+        </li>
+		<!--
+        <li class="ams-m-navigation-bar__nav-item " role="menuitem"
+            style="min-width: 12.2em;width:100%;max-width:12.2em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               title="Führt zu einer Liste aller Qualifikationsniveaus (nach Niveaus und dann nach Berufsbereichen sortiert)."
+               href="/bis/QualifikationsniveauBaum.php">Qualifikationsniveau
+            </a>
+        </li>
+		-->
+        <li class="ams-m-navigation-bar__nav-item " role="menuitem"
+            style="min-width:10.5em;width:100%;max-width:10.5em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               title="Führt Sie zu einer Liste aller Arbeitsumfelder."
+               href="/bis/arbeitsumfelder">Arbeitsumfelder
+            </a>
+        </li>
+
+        <li class="ams-m-navigation-bar__nav-item " role="menuitem"
+            style="min-width:9.5em;width:100%;max-width:9.5em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               title="Die Schlagwortliste enthält berufliche Anforderungen wie Kompetenzen und Arbeitsumfelder; Suchergebnis: Berufe."
+               href="/bis/schlagwortliste">Schlagwortliste
+            </a>
+        </li>
+
+        <li class="ams-m-navigation-bar__nav-item relative " id="search-li-item" role="menuitem"
+            style="min-width:4em;width:100%;max-width:4em;">
+            <a class="ams-m-navigation-bar__nav-item-link" id="suche-menu-link"
+               aria-label="Zur Suche"
+               title="Zur Suche"
+               href="#" onclick="toggleMenuPopup(this); return false;"><span class="icon-fa-search menu-icon-big"></span>
+            </a>
+            <div class="menu-popup hidden">
+    <div class="ams-m-jp-teaser">
+        <ul class="ams-m-jp-teaser__tabs" role="tablist" aria-multiselectable="false">
+            <li class="ams-m-jp-teaser__tab">
+                <div id="ams-m-jp-teaser-tab1-search-popup" class="ams-m-jp-teaser__tab-label ams-m-jp-teaser--checked" tabindex="0" role="tab" aria-controls="jp-teaser-tab-content1-search-popup">
+                    Einfache Suche
+                </div>
+                <div id="jp-teaser-tab-content1-search-popup" class="ams-m-jp-teaser__tab-content ams-m-jp-teaser--visible" aria-labelledby="ams-m-jp-teaser-tab1-search-popup" aria-hidden="false" role="tabpanel">
+                    <form onsubmit="return submitSchnellsuche(this, event)" action="/bis/suche.php" name="suche_form" method="get">
+                    	<fieldset>
+                    		<legend class="fwd-visually-hidden">Einfache Suche</legend>
+	                        <div class="ams-m-jp-teaser__row awesomplete-wrapper">
+
+	                            <div class="awesomplete">
+	                                <div class="awesomplete" id="suche-input-wrapper">
+		                                <label class="ams-m-input-text-w-label__label fwd-visually-hidden" for="suche">
+			                                Beruf, Lehrausbildung, Kompetenz usw.
+			                            </label>
+	                                    <input class="ams-e-input-text ams-m-jp-teaser__awesomplete" type="text" name="query"
+	                                           aria-label="Suchbegriff eingeben" id="suche" placeholder="Suchbegriff eingeben"
+	                                           aria-required="true" autocomplete="off" aria-autocomplete="list">
+	                                </div>
+	                            </div>
+
+	                            <button class="ams-e-button ams-e-button--primary ams-m-jp-teaser__button" id="suche-button" type="submit">Suchen</button>
+	                        </div>
+	                        <div class="ams-m-jp-teaser__row">
+	                            <div class="ams-e-checkbox relative">
+	                                <input id="exakte-suche-checkbox" type="checkbox" name="exakte_suche">
+	                                <label for="exakte-suche-checkbox">
+	                                    <span>exakte Suche</span>
+	                                </label>
+	                                <span id="exakte-suche-popup" class="exakte-suche-popup fas fa-question-circle popup-icon"
+	                                	onclick="showInfoPopup('exakte_suche.exakte_suche_info_popup_titel', 'exakte_suche.exakte_suche_info_popup_text', 'search_ipop', this, event);"
+	                                	title="Informationen zur exakten Suche"
+				                       data-format-to-accordion="true"
+				                       data-is-config-text-index="true"></span>
+	                            </div>
+	                        </div>
+                        </fieldset>
+                    </form>
+
+                    <div class="ams-m-jp-teaser__row left-center relative">
+                        <span class="fas fa-question-circle popup-icon" title="Informationen zur einfachen Suche" onclick="showInfoPopup(
+                                'suche.info_popup_titel', 'suche.info_popup_text', 'search_ipop', this, event);"
+                           data-format-to-accordion="true"
+                           data-is-config-text-index="true"></span> <span>Fragen zur einfachen Suche?</span>
+                    </div>
+
+
+                </div>
+            </li>
+            <li class="ams-m-jp-teaser__tab">
+                <div id="erweiterte-suche-toggle" class="ams-m-jp-teaser__tab-label ams-m-jp-teaser--unchecked" onclick="toggleSuchbegriffeLupeActive();" tabindex="0">
+                    Erweiterte Suche aktivieren
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+        </li>
+
+        <li class="ams-m-navigation-bar__nav-item " id="favoriten-li-item" role="menuitem"
+            style="min-width:4em;width:100%;max-width:4em;">
+            <a class="ams-m-navigation-bar__nav-item-link"
+               aria-label="Zu den Favoriten"
+               title="Zu den Favoriten"
+               href="/bis/favoriten"><span class="fas fa-star menu-icon-big"></span>
+            </a>
+        </li>
+
+        <li class="ams-m-navigation-bar__nav-item relative" id="login-li-item" role="menuitem"
+            style="min-width:4em;width:100%;max-width:4em;">
+            <a class="ams-m-navigation-bar__nav-item-link" id="login-menu-link"
+               aria-label="Wiedereinstieg"
+               title="Wiedereinstieg"
+               href="#" onclick="toggleMenuPopup(this); return false;"><span class="fas fa-user menu-icon-big"></span>
+            </a>
+            <div class="menu-popup wiedereinstieg hidden">
+    <div class="ams-m-jp-teaser" id="wiedereinstieg-menu-popup-wrapper">
+        <ul class="ams-m-jp-teaser__tabs" role="tablist" aria-multiselectable="false">
+            <li class="ams-m-jp-teaser__tab">
+                <div id="ams-m-jp-teaser-tab1-login-popup" class="ams-m-jp-teaser__tab-label ams-m-jp-teaser--unchecked relative" tabindex="0" role="tab" aria-controls="jp-teaser-tab-content1-login-popup">
+                    Wiedereinstieg
+                    <span class="fas fa-question-circle popup-icon" title="Informationen zur einfachen Suche" data-is-config-text-index="true" onclick="showInfoPopup(
+                                'wiedereinstieg.fragezeichen_popup_titel', 'wiedereinstieg.fragezeichen_popup_text', 'erweiterte_suche_ipop', this, event);"
+                       data-format-to-accordion="true"></span>
+                </div>
+                <div id="jp-teaser-tab-content1-login-popup" class="ams-m-jp-teaser__tab-content ams-m-jp-teaser--visible" aria-labelledby="ams-m-jp-teaser-tab1-login-popup" aria-hidden="false" role="tabpanel">
+                    <div id="login-wrapper">
+                        <form id="login" class="login-form">
+                            <fieldset class="no-style-fieldset">
+                            	<legend class="fwd-visually-hidden">Wiedereinstieg</legend>
+                                <div class="ams-m-input-text-w-label">
+                                    <label class="ams-m-input-text-w-label__label" for="login-tagesdatum">Tagesdatum:</label>
+                                    <input type="text" id="login-tagesdatum" name="login-tagesdatum" aria-required="true" class="ams-e-input-text" value="" placeholder="Tagesdatum eingeben" required="" />
+                                </div>
+                                <div class="ams-m-input-text-w-label">
+                                    <label class="ams-m-input-text-w-label__label" for="login-pin-code">PIN-Code:</label>
+                                    <input type="text" id="login-pin-code" name="login-pin-code" aria-required="true" class="ams-e-input-text" value="" placeholder="PIN-Code eingeben" required="">
+                                </div>
+                            </fieldset>
+                        </form>
+                        <div class="ams-m-top-task-teaser__bottom-area">
+                            <button class="ams-e-button ams-e-button--primary full-width space-top" id="login-button" title="">Anmelden</button>
+                        </div>
+                    </div>
+                    <div id="login-data-wrapper" class="hidden">
+                        <p><span class="bold">Tagesdatum:</span> <span id="tagesdatum"></span></p>
+                        <p><span class="bold">PIN-Code:</span> <span id="pin"></span></p>
+                        <div class="ams-m-top-task-teaser__bottom-area">
+                            <button class="ams-e-button ams-e-button--primary full-width space-top" id="logout-button" title="Abmelden" onclick="" type="button">
+                                Abmelden
+                            </button>
+                            
+                            <button id="user-delete-button" class="ams-e-button ams-e-button--primary full-width space-top" title="Hier können Sie Ihren gesamten PIN und alle gespeicherten Suchabfragen löschen." onclick="" type="button">
+                                Konto löschen
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+        </li>
+    </ul>
+    <div class="ams-m-navigation-bar__more hidden" id="main-menu-more">
+        <div class="ams-m-navigation-bar__more-button" id="main-menu-more-button" tabindex="0" role="button" aria-label="Mehr Navigationspunkte">
+            <div>Mehr</div>
+            <span class="ams-m-navigation-bar__more-icon icon-fa-chevron-down" aria-hidden="true"></span>
+        </div>
+        <ul class="ams-m-navigation-bar__more-list " id="main-menu-more-list">
+
+        </ul>
+    </div>
+</nav>
+
+        </div>
+    </div>
+
+    
+<div class="startpageHeader parbase section startpage-header__top">
+    <div class="ams-l-main__startpage-header search-teaser">
+        <picture>
+            <source media="(min-width: 1201px)" srcset="images/startseite/techniker_1589.jpg" />
+            <source media="(min-width: 0px)" srcset="images/startseite/techniker_1589.jpg"/>
+            <img src="images/startseite/techniker_1589.jpg" alt="Startseite-Foto" />
+        </picture>
+    </div>
+    <div class="header-controls-wrapper">
+        <span class="copyright">Copyright: AMS/Chloe Potter</span>
+    </div>
+</div>
+
+
+</header>
+
+<main class="ams-l-main " id="ams-content">
+
+
+    <div class="ams-l-main__wrapper start-page">
+        <section class="ams-l-main__content">
+            <div class="ams-p-content">
+                <div class="ams-p-content-section">
+                    <div class="structureStartRow parbase">
+                        <div class="ams-l-main__startpage-content-row ams-l-main__startpage-content-row--hidden startpage-search-teaser">
+
+    <div class="ams-l-main__startpage-content-item ams-l-main__startpage-content-item--mobil-top">
+        <div>
+            <div class="teaser parbase">
+                <div class="ams-m-cta-teaser ams-m-jp-teaser suche-teaser-content-wrapper" id="startpage-search-widget">
+                    <ul class="ams-m-jp-teaser__tabs relative" role="tablist" aria-multiselectable="false">
+    <li class="ams-m-jp-teaser__tab">
+        <div id="startseite-suche-toggle" class="ams-m-jp-teaser__tab-label ams-m-jp-teaser--checked" tabindex="0" role="tab" aria-controls="jp-teaser-tab-content1-startpage-search" title="Zu der einfachen Suche wechseln">
+            Einfache Suche
+        </div>
+        <div id="jp-teaser-tab-content1-startpage-search" class="ams-m-jp-teaser__tab-content ams-m-jp-teaser--visible" aria-labelledby="jp-teaser-tab-content1-startpage-search" aria-hidden="false" role="tabpanel">
+            <form onsubmit="return submitSchnellsuche(this, event)" action="/bis/suche.php" name="suche_startseite_form" method="get">
+                <div class="ams-m-jp-teaser__row awesomplete-wrapper">
+
+                    <!-- INPUT TEXT ELEMENT -->
+                    <div class="awesomplete">
+                        <div class="awesomplete" id="suche-startseite-input-wrapper">
+                            <label class="ams-m-input-text-w-label__label fwd-visually-hidden" for="suche-startseite">
+                                Suche nach Beruf, Lehrausbildung, Kompetenz usw.
+                            </label>
+                            <input class="ams-e-input-text ams-m-jp-teaser__awesomplete" type="text"
+                                   name="query" aria-label="Suchbegriff eingeben" id="suche-startseite" placeholder="Suchbegriff eingeben"
+                                   aria-required="true" autocomplete="off" aria-autocomplete="list">
+                        </div>
+                    </div>
+
+                    <button class="ams-e-button ams-e-button--primary ams-m-jp-teaser__button" id="suche-startseite-button" type="submit">Suchen</button>
+                </div>
+                <div class="ams-m-jp-teaser__row">
+                    <div class="ams-e-checkbox relative">
+	                    <input id="exakte-suche-startseite-checkbox" type="checkbox" name="exakte_suche">
+
+	                    <label for="exakte-suche-startseite-checkbox">
+	                        <span>
+	                        	exakte Suche
+	                        </span>
+
+	                    </label>
+	                    <span id="exakte-suche-popup-startpage" class="exakte-suche-popup fas fa-question-circle popup-icon" onclick="showInfoPopup('exakte_suche.exakte_suche_info_popup_titel', 'exakte_suche.exakte_suche_info_popup_text', 'search_ipop', this, event);"
+	                    	title="Informationen zur exakten Suche"
+	                    	data-format-to-accordion="true"
+	                        data-show-overlay="true"
+		                    data-is-config-text-index="true"></span>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </li>
+    <li class="ams-m-jp-teaser__tab">
+        <div id="startseite-erweiterte-suche-toggle" class="ams-m-jp-teaser__tab-label ams-m-jp-teaser--unchecked" tabindex="0" aria-controls="jp-teaser-tab-content2" title="Zu der erweiterten Suche wechseln">
+            Erweiterte Suche
+        </div>
+        <div id="jp-teaser-tab-content2" class="ams-m-jp-teaser__tab-content ams-m-jp-teaser--hidden" aria-labelledby="startseite-erweiterte-suche-toggle" aria-hidden="true" role="tabpanel">
+            <div class="ams-m-jp-teaser__row ams-m-jp-teaser__rowIEfix">
+                <form name="erweiterte_suche" id="erweiterte-suche-form" class="erweiterte-suche-form" onsubmit="stopEvent(event); return false;">
+    <fieldset class="fieldsetSuche awesomplete-wrapper">
+    	<legend class="fwd-visually-hidden">Erweiterte Suche</legend>
+        <div class="ams-m-jp-teaser__row erweiterte-suche-input-wrapper awesomplete-wrapper">
+            <div class="ams-m-input-text-w-label relative space-bottom-medium awesomplete" id="erweiterte-suche-input-wrapper">
+                <label class="ams-m-input-text-w-label__label fwd-visually-hidden" for="erweiterte_suche">
+                    Suche nach Berufen, Qualifikationen, Ausbildungen usw.
+                </label>
+                <input class="ams-e-input-text ams-m-search-field__awesomplete" type="text" id="erweiterte_suche" name="erweiterte_suche"
+                       placeholder="Suchkriterien eingeben, z.B. Kompetenzen, ..."
+                       aria-required="true" aria-invalid="false" />
+            </div>
+        </div>
+
+        <input type="hidden" id="term-noteid" name="term_noteid" value="" />
+        <input type="hidden" id="term-typ" name="term_typ" value="" />
+
+        <div class="ams-m-filter__facetted-category left-align">
+            <div class="ams-m-filter__facetted-content ams-m-filter--visible">
+                <input id="suche-suchbegriffe-such-string" type="hidden" value="" />
+						  <input id="suche-suchbegriffe-color-string" type="hidden" value="" />
+						  <input id="suche-suchbegriffe-muss-status-string" type="hidden" value="" />
+							<ul id="suche-suchbegriffe-list" class="suche-suchbegriffe-list "></ul>
+            </div>
+        </div>
+
+        <ul class="ams-m-form-element-list ams-m-form-element-list__reset-submit-search-wrapper space-top-big">
+            <li class="ams-m-form-element-list__item">
+                <button class="ams-e-button ams-e-button--secondary ams-m-filter__selected-button clear-filter" type="button" id="erweiterte-suche-clear-button">Alle löschen</button>
+            </li>
+            <li class="ams-m-form-element-list__item ams-m-form-element-list__suche-button-item">
+                <button class="ams-e-button ams-e-button--primary erweiterte-suche-button bis-e-button" id="erweiterte-suche-button" title="Erweiterte Suche starten" onclick="window.suchergebnisseViewModel.erweiterteSucheStarten(); stopEvent(event); return false;"   >
+                Starten
+            </button>
+            </li>
+        </ul>
+
+        <div class="ams-m-select-with-label hidden" id="gespeicherte-erweiterte-suche-wrapper">
+                    <label class="ams-m-select-with-label__label" for="gespeicherte-erweiterte-suche">Gespeicherte Suchabfragen</label>
+                    <div class="ams-e-select " data-js="ams-e-select">
+                        <select id="gespeicherte-erweiterte-suche" onchange="suchergebnisseViewModel.gespeicherteErweiterteSucheListeLaden()"><option value="">bitte auswählen</option></select>
+                    </div>
+                </div>
+        <ul class="ams-m-form-element-list ams-m-form-element-list__reset-submit-search-wrapper user-not-logged-in" id="suche-speichern-list">
+            <li class="ams-m-form-element-list__item">
+                <button class="ams-e-button ams-e-button--secondary erweiterte-suche-button bis-e-button space-top hidden" id="erweiterte-suche-loeschen-button" title="Hier können Sie die gewählte Suchabfrage löschen" onclick="window.suchergebnisseViewModel.erweiterteSucheDelete(); stopEvent(event); return false;"   >
+                Suche löschen
+            </button>
+            </li>
+            <li class="ams-m-form-element-list__item">
+                <div id="erweiterte-suche-speichern-wrapper" class="relative erweiterte-suche-speichern-wrapper"><button class="ams-e-button ams-e-button--secondary erweiterte-suche-button--full-width" id="erweiterte-suche-save-button" title="Suche speichern" onclick="infoPopupZeigen('Suche speichern', '&lt;form&gt;&lt;label id=&quot;erw_suche_speichern_name_label&quot; for=&quot;erw_suche_speichern_name&quot;&gt;Name: &lt;/label&gt;&lt;br&gt;&lt;div class=&quot;grid-row erw_suche_speichern&quot;&gt;&lt;div class=&quot;content-left grid-cell&quot;&gt;&lt;input class=&quot;ams-e-input-text ams-m-search-field__awesomplete ui-autocomplete-input&quot; type=&quot;text&quot; id=&quot;erw_suche_speichern_name&quot; name=&quot;erw_suche_speichern_name&quot; placeholder=&quot;&quot; aria-required=&quot;true&quot; aria-invalid=&quot;false&quot; autocomplete=&quot;off&quot; maxlength=&quot;200&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content-right grid-cell&quot;&gt;&lt;button class=&quot;ams-e-button ams-e-button--primary suche-button bis-e-button&quot; type=&quot;submit&quot; id=&quot;erw_suche-popup-speichern-button&quot; title=&quot;Suche speichern&quot; onclick=&quot;suchergebnisseViewModel.saveErweiterteSuche(); stopEvent(event); return false;&quot;&gt;Suche speichern&lt;/button&gt;&lt;script&gt;suchergebnisseViewModel.initErweiterteSucheSpeichernDialog();&lt;/script&gt;&lt;/div&gt;&lt;/div&gt;&lt;/form&gt;', 'relevanz_sortierung_ipop', event, -290, true, true, ''); stopEvent(event); return false;" type="button" name="erweiterte-suche-save-button" >
+                Suche speichern
+            </button></div>
+            </li>
+        </ul>
+
+        
+    </fieldset>
+</form>
+
+            </div>
+        </div>
+    </li>
+    <li class="ams-m-jp-teaser__tab relative">
+        <span id="suche-popup" class="fas fa-question-circle popup-icon search-popup-icon" title="Informationen zur einfachen Suche" onclick="showInfoPopup(
+                'suche.info_popup_titel', 'suche.info_popup_text', 'search_ipop', this, event);"
+           data-format-to-accordion="true"
+           data-show-overlay="true"
+           data-is-config-text-index="true"><span class="ams-m-jp-teaser__tab-label">Fragen zur einfachen Suche?</span></span>
+
+        <span id="erweiterte-suche-popup" class="fas fa-question-circle popup-icon search-popup-icon hidden" title="Informationen zur erweiterten Suche" onclick="showInfoPopup(
+                'erweiterte_suche.info_popup_titel', 'erweiterte_suche.info_popup_text', 'erweiterte_suche_ipop', this, event);"
+           data-format-to-accordion="true"
+           data-show-overlay="true"
+           data-is-config-text-index="true"><span class="ams-m-jp-teaser__tab-label">Fragen zur erweiterten Suche?</span></span>
+    </li>
+</ul>
+
+                </div>
+                <p class="ams-l-main__startpage-header-copytext ams-e-abstract search-box-wrapper-text" id="startpage-welcome-text">
+                    <strong><span style="color: #093c7d">NEWS:</span></strong> Die Lehrausbildungen im Bereich Elektrotechnik wurden überarbeitet und traten mit 1. Jänner in Kraft. Sehen Sie sich die Änderungen beim <a href=https://bis.ams.or.at/bis/lehrberuf/5256-ElektrotechnikerIn%2C%20Hauptmodul%20Automatisierungs-%20und%20Prozessleittechnik <u>Hauptmodul Automatisierungs- und Prozessleittechnik</u></a> an. 
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+						<div class="ams-l-main__startpage-content-item startpage-news-teaser">
+    <div>
+        <div class="teaser parbase">
+            <div class="ams-m-cta-teaser">
+                <p class="teaser_hinweis news-box-wrapper-text" id="startpage-news-text">
+                    Das <strong><span style="color: #093c7d"> Berufsinformationssystem </span></strong> (BIS) bietet für ca. 500 Berufsprofile Kurzbeschreibungen mit Tätigkeiten, beruflichen Kompetenzen, Gehaltsangaben, Weiterbildungen, uvm.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                        <div class="ams-l-main__startpage-content-row ams-l-main__startpage-content-row__startpage-main-row">
+
+                            <div class="ams-l-main__startpage-content-item">
+    <div>
+        <div class="teaser parbase">
+
+            <div class="ams-m-top-task-teaser">
+                <div class="ams-m-top-task-teaser__top-area">
+                    <div class="ams-m-top-task-teaser__icon">
+                        <span class="icon-fa icon-fa-mouse-pointer" aria-hidden="true"></span>
+                    </div>
+
+                    <h2 class="ams-m-top-task-teaser__header" id="ams-m-top-task-teaser__header-id-berufsprofil">Berufe</h2>
+                </div>
+                <div class="ams-m-top-task-teaser__center-area">
+                    <div class="ams-p-content-section__content ams-p-content-section"
+                         id="ams-m-top-task-teaser-content-berufsprofil"
+                         aria-labelledby="ams-m-top-task-teaser__header-id-berufsprofil"
+                         aria-hidden="true" role="tabpanel">
+                        <div>
+                            <div class="contentRTE parbase">
+                                <div class="ams-m-content-block-text teaser-berufsprofile">
+                                    <ul><li class="ams-m-news-teaser__item">in 15 Berufsbereiche gegliederte und laufend aktualisierte Systematik</li>
+                                        <li class="ams-m-news-teaser__item">ca. 500 Berufsprofile</li>
+                                        <li class="ams-m-news-teaser__item">ca. 17.500 Berufsbezeichnungen</li>
+                                        <li class="ams-m-news-teaser__item">alle Lehrausbildungen Österreichs (ca. 320)</li></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ams-m-top-task-teaser__bottom-area">
+                    <a class="ams-e-button ams-e-button--secondary ams-m-top-task-teaser__button" title="Führt Sie zu einer Liste aller Berufsprofile (alphabetisch oder systematisch gegliedert)." href="/bis/berufe-von-a-bis-z">zu den Berufsprofilen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                            <div class="ams-l-main__startpage-content-item">
+    <div>
+        <div class="teaser parbase">
+            <div class="ams-m-cta-teaser">
+                <div class="ams-m-tip-box__icon_startseite icon-fa-lightbulb-o" aria-hidden="true"></div>
+                <h2 class="ams-m-top-task-teaser__header hinweis-teaser-title">Hinweis</h2>
+                <p class="teaser_hinweis">Im November 2023 ging das neue Update des BIS online (Release 2.5). Dabei wurden u. a. die Suche und die Mobilversion angepasst und die Digitalen Kompetenzen nach DigComp ins PDF aufgenommen. Detaillierte Informationen zu den Änderungen und neuen Funktionen können in den Release Notes (siehe PDF-Datei unten) nachgelesen werden. Darin sind auch einige Anleitungen, z. B. zur Nutzung der erweiterten Suche, enthalten.</p>
+                <div class="ams-m-cta-teaser__bottom-area">
+                    <div class="download parbase">
+                        <div class="ams-m-download_hinweis ams-m-download--margin-top">
+                            <div class="ams-m-download__icon_hinweis icon-fa-download" aria-hidden="true"></div>
+                            <div class="ams-m-download__content_hinweis">
+
+                                <a class="ams-m-download__content-link hinweis-link" title="Release Notes" href="dokumente/Release-Notes.pdf" target="_blank" tabindex="0">
+                                    <span>Release-Notes.pdf</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                            <div class="ams-l-main__startpage-content-item">
+    <div>
+        <div class="teaser parbase">
+
+            <div class="ams-m-top-task-teaser">
+                <div class="ams-m-top-task-teaser__top-area">
+                    <div class="ams-m-top-task-teaser__icon">
+                        <span class="icon-fa icon-fa-mouse-pointer" aria-hidden="true"></span>
+                    </div>
+
+                    <h2 class="ams-m-top-task-teaser__header" id="ams-m-top-task-teaser__header-id-kompetenzen">Kompetenzen</h2>
+                </div>
+                <div class="ams-m-top-task-teaser__center-area">
+                    <div class="ams-p-content-section__content ams-p-content-section" id="ams-m-top-task-teaser-content-kompetenzen" aria-labelledby="ams-m-top-task-teaser__header-id-kompetenzen" aria-hidden="true" role="tabpanel">
+                        <div>
+                            <div class="contentRTE parbase">
+                                <div class="ams-m-content-block-text teaser-berufsprofile">
+                                   <ul><li class="ams-m-news-teaser__item">in 24 Kompetenzbereiche hierarchisch gegliederte und laufend aktualisierte Systematik</li><li class="ams-m-news-teaser__item">über 25.000 Kompetenzbezeichnungen</li><li class="ams-m-news-teaser__item">Erklärungen zu weniger geläufigen Kompetenzen</li><li class="ams-m-news-teaser__item">direkte Anbindung an die Berufssystematik</li></ul>
+                                </div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ams-m-top-task-teaser__bottom-area">
+                    <a class="ams-e-button ams-e-button--secondary ams-m-top-task-teaser__button" title="Führt Sie zu einer Liste aller Kompetenzen (alphabetisch oder nach Kompetenzbereichen gegliedert)." href="/bis/kompetenzen-nach-bereichen">zu den beruflichen Kompetenzen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div class="ams-l-main__secondary">
+    <div class="ams-p-feedback ams-p-feedback--margin-top">
+        <div class="ams-p-feedback__top-area anpassung">
+            <p class="ams-p-feedback__paragraph">Diese Seite wurde aktualisiert am: 16. November 2023 V2.5.0.0</p>
+
+            <button class="ams-e-button ams-e-button--tertiary ams-p-feedback__feedback-button" id="feedback-button" type="button" aria-haspopup="true" tabindex="0" title="Klicken Sie hier, um einen Fehler zu melden.">Wollen Sie einen Fehler melden?</button>
+        </div>
+    </div>
+</div>
+
+
+</main>
+<footer class="ams-l-footer">
+    <div class="ams-l-footer__centering-container">
+        <div class="ams-p-footer">
+
+            <!-- BEM: ELEMENT / MODIFIER -->
+            <hr class="ams-e-horizontal-rule">
+            <div class="ams-p-footer__section">
+
+                <div class="ams-p-footer__heading">Rechtliches</div>
+
+                <ul class="ams-p-footer__link-list">
+                    <li class="ams-p-footer__link-item">
+                        <a href="/bis/impressum" title= "Zum Impressum">Impressum</a>
+                    </li>
+                    <li class="ams-p-footer__link-item">
+                    	<a href="/bis/datenschutz" title= "Datenschutz">Datenschutz</a>
+                    </li>
+                    <li class="ams-p-footer__link-item">
+                    	<a href="/bis/barrierefreiheit" title= "Barrierefreiheit">Barrierefreiheit</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ams-p-footer__bottom">
+                <div class="ams-p-footer__copyright">
+                    © 2024 AMS Österreich
+                </div>
+                <a class="ams-p-footer__totop" href="#header-bar" title="Klicken Sie hier, um wieder nach oben zu gelangen.">Nach oben</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+langchain
+openai     
+pinecone-client
+session_info
+tiktoken
+tqdm
+lxml
+python-dotenv
+llama_index
+pypdf
+chromadb
+pysqlite3-binary
+spacy
