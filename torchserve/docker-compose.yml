@@ -1,0 +1,11 @@
+version: '3'
+services:
+  torchserve:
+    image: pytorch/torchserve:latest
+    command: ["torchserve", "--start", "--ncs", "--model-store", "model_store", "--models", "Textgeneration.mar"]
+    ports:
+      - "8080:8080" # Exposing the default management port
+      - "8081:8081" # Exposing the default inference API port
+    volumes:
+      - ./model_store:/home/model-server/model_store # Map the model store directory
+      - ./logs:/home/model-server/logs # Map the logs directory
