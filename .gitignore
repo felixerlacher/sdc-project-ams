@@ -8,6 +8,8 @@ __pycache__/
 felix/wandb/*
 felix/offload_folder/*
 felix/german-gpt2-ams-finetuned/*
+felix/results/*
+felix/LeoLM/*
 
 # C extensions
 *.so
