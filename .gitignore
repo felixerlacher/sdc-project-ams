@@ -11,6 +11,8 @@ felix/german-gpt2-ams-finetuned/*
 felix/results/*
 felix/LeoLM/*
 felix/chroma/*
+felix/convert_models/*
+felix/results_old/*
 
 # C extensions
 *.so
