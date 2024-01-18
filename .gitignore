@@ -10,6 +10,7 @@ felix/offload_folder/*
 felix/german-gpt2-ams-finetuned/*
 felix/results/*
 felix/LeoLM/*
+felix/chroma/*
 
 # C extensions
 *.so
