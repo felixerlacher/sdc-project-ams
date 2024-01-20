@@ -13,6 +13,9 @@ felix/LeoLM/*
 felix/chroma/*
 felix/convert_models/*
 felix/results_old/*
+../.venv/*
+../.venv/
+
 
 # C extensions
 *.so
