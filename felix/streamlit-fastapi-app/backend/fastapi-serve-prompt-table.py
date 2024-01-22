@@ -17,6 +17,7 @@ os.environ["LANGCHAIN_WANDB_TRACING"] = "true"
 
 app = FastAPI()
 
+# activate callbacks for streaming stdout or look override the callback manager for more options
 # Callbacks and LLM setup (similar to your initial setup)
 #callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 llm = LlamaCpp(
@@ -26,6 +27,7 @@ llm = LlamaCpp(
     #model_path="./LeoLM/leo-mistral-hessianai-7b-ams-merged-16bit-f16.gguf",
     model_path="./leo-hessianai-7b-chat-ams-merged-q8_0.gguf",
     temperature=0.5,
+    n_ctx = 1024,
     max_tokens=2000,
     top_p=0.95,
     #callback_manager=callback_manager,
@@ -37,29 +39,31 @@ llm = LlamaCpp(
     seed = 42
 )
 
+
 prompt_template = PromptTemplate.from_template("""
 <|im_start|>system
-{system_message}<|im_end|>
+Du befindest dich in einem Chat. Du bist der Assistant, und deine Aufgabe ist es, bei der Berufswahl zu beraten. Du agierst ausschließlich als 'Assistant' und antwortest nur in dieser Rolle. Die bisherige Konversation kann hier eingesehen werden:\n{chat_history}<|im_end|>
 <|im_start|>user
 {prompt}<|im_end|>
 <|im_start|>assistant
 """)
 
-system_message = "Du befindest dich in einem Chat. Du bist der Assistant, und deine Aufgabe ist es, dem Human bei der Berufswahl zu beraten. Du agierst ausschließlich als 'Assistant' und antwortest nur in dieser Rolle. Du wirst unter keinen Umständen als 'Human' antworten. Die bisherige Konversation kann hier eingesehen werden:\n{chat_history}"
 prompt = "Hallo, ich würde beruflich gerne etwas in Richtung Machine Learning machen. Was würdest du mir empfehlen?"
 
-memory = ConversationBufferWindowMemory( k=1, return_messages=True)  # Set the desired window size
+memory = ConversationBufferWindowMemory( k=3, return_messages=True)  # Set the desired window size
 
 class ChatRequest(BaseModel):
     question: str
 
 async def llm_call(question):
-    prompt = prompt_template.format(system_message=system_message, prompt=question, chat_history=memory)
+    memory.load_memory_variables({})  # Load memory variables
+    prompt = prompt_template.format(prompt=question, chat_history=memory.chat_memory.messages)
     print("\n\n\nPrompt: ", prompt, "\n\n\n")
     response = llm.generate([prompt])
-    #print("\n\n\nResponse: ", response, "\n\n\n")
     content = response.generations[0][0].text
     print("\n\n\nContent: ", content, "\n\n\n")
+    memory.save_context({"user": question}, {"assistant": content})  # Save assistant output to memory
+    #print("\n\n\nMemory: ", memory, "\n\n\n")
     return content
 
 # endpoint
