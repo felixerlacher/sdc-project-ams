@@ -15,6 +15,7 @@ felix/convert_models/*
 felix/results_old/*
 ../.venv/*
 ../.venv/
+felix/streamlit-fastapi-app/backend/wandb/*
 
 
 # C extensions

@@ -25,7 +25,7 @@ from langchain.memory import ConversationBufferMemory
 #callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
 
-
+streamed_data = []
 
 #class StreamHandler(BaseCallbackHandler):
 class StreamHandler(StreamingStdOutCallbackHandler):
@@ -36,11 +36,8 @@ class StreamHandler(StreamingStdOutCallbackHandler):
 
     def on_llm_new_token(self, token: str, **kwargs) -> None:
         self.text += token
-        display_function = getattr(self.container, self.display_method, None)
-        if display_function is not None:
-            display_function(self.text)
-        else:
-            raise ValueError(f"Invalid display_method: {self.display_method}")
+        # Append the new token to the global list
+        streamed_data.append(self.text)
         
 
 

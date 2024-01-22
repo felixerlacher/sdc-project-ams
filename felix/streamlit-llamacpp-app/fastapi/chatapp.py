@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 import requests
 import json
+from sse_starlette.sse import EventSourceResponse
 
 # Define the Pydantic model for the incoming request
 class IncomingRequest(BaseModel):
