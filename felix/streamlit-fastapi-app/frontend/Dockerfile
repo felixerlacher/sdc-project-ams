@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE ${STREAMLIT_SERVER_PORT}
 
-CMD ["streamlit", "run", "streamlit-ui.py"]
+CMD ["streamlit", "run", "streamlit-ui-prompt-table.py"]

@@ -20,31 +20,46 @@ os.environ["LANGCHAIN_WANDB_TRACING"] = "true"
 
 app = FastAPI()
 
+
+
 # Callbacks and LLM setup (similar to your initial setup)
 callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 llm = LlamaCpp(
-    #model_path="../../LeoLM/leo-mistral-hessianai-7b-ams-merged-16bit-q4_k_m.gguf",
-    #model_path="../../LeoLM/leo-hessianai-7b-chat-ams-merged-16bit-q8_0.gguf",
-    # for docker
-    model_path="./leo-hessianai-7b-chat-ams-merged-16bit-q8_0.gguf",
-    temperature=0.2,
+    #model_path="./LeoLM/leo-hessianai-7b-chat-ams-merged-16bit-q8_0.gguf",
+    #model_path="./leo-mistral-hessianai-7b-chat-ams-merged-q8_0.gguf",
+    #model_path="./LeoLM/leo-mistral-hessianai-7b-ams-merged-16bit-q5_k_m.gguf",
+    #model_path="./LeoLM/leo-mistral-hessianai-7b-ams-merged-16bit-f16.gguf",
+    model_path="./leo-hessianai-7b-chat-ams-merged-q8_0.gguf",
+    temperature=0.5,
     max_tokens=2000,
-    context_window=2000,
-    #context_window=2000,
-    top_p=0.9,
+    top_p=0.95,
     callback_manager=callback_manager,
-    verbose=True,
-    chat_format="Llama2"
+    verbose=True,  # Verbose is required to pass to the callback manager
+    model_kwargs={"chat_format": "llama-2"},
+    # also remove "<dummy00007>", i think there was a problem with the tokenizer, "<|im_end|>" -> "<dummy00007>, <|im_start|> -> "dummy00006>"
+    stop = ["<|im_end|>", "<|im_start|>", "<dummy00007>"],
+    echo=True,
+    seed = 42
 )
 
-# overwrite SystemMessagePromptTemplate to conform template:
-# """
+
+
+# from langchain.prompts import PromptTemplate
+
+# prompt_template = PromptTemplate.from_template("""
 # <|im_start|>system
 # {system_message}<|im_end|>
 # <|im_start|>user
-# {prompt}<|im_end|>
+# {question}<|im_end|>
 # <|im_start|>assistant
-# """
+# """)
+# system_message = "Du befindest dich in einem Chat. Du bist der Assistant, und deine Aufgabe ist es, dem Human bei der Berufswahl zu beraten. Du agierst ausschließlich als 'Assistant' und antwortest nur in dieser Rolle. Du wirst unter keinen Umständen als 'Human' antworten. Die bisherige Konversation kann hier eingesehen werden:\n{chat_history}\n"
+
+# question = "Was ist der beste Beruf?"
+
+# prompt = prompt_template.format(system_message=system_message, question=question, chat_history="")
+
+
 
 
 prompt = ChatPromptTemplate(

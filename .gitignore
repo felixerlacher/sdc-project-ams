@@ -176,3 +176,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 felix/streamlit-fastapi-app/backend/leo-hessianai-7b-chat-ams-merged-16bit-q8_0.gguf
+felix/streamlit-fastapi-app/backend/leo-hessianai-7b-chat-ams-merged-q8_0.gguf
+felix/streamlit-fastapi-app/backend/leo-mistral-hessianai-7b-chat-ams-merged-q8_0.gguf
