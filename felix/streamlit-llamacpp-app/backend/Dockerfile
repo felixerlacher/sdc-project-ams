@@ -9,7 +9,9 @@ WORKDIR /app
 #
 #RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-RUN pip install llama-cpp-python[server]
+RUN conda install conda-forge::clblas
+
+RUN CMAKE_ARGS="-DLLAMA_CLBLAST=on" pip install llama-cpp-python[server]
 
 #
 #COPY . /
@@ -17,7 +19,7 @@ RUN pip install llama-cpp-python[server]
 EXPOSE 8000
 
 # Copy the .gguf file into the container
-COPY ../LeoLM/leo-mistral-hessianai-7b-chat-ams-merged-q8_0.gguf /app
+COPY ./LeoLM/leo-mistral-hessianai-7b-chat-ams-merged-q8_0.gguf /app
 
 # Run the server when the container launches
 #CMD ["python3 -m llama_cpp.server --model app/leo-mistral-hessianai-7b-ams-merged-16bit-q4_k_m.gguf"]
