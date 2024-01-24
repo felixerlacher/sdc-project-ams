@@ -1,7 +1,7 @@
 # sdc-project-ams Berufsberatungsbot
 
 ## berfuslexikon_scrape.ipynb
-This notebook scrapes the ~1400 profession from the website berufslexikon.at and saves it to a json
+This notebook scrapes the about 1400 professions from the AMS website berufslexikon.at and saves it to a json
 
 ## just_finetuning_leo-hessianai-mistral.ipynb
 This notebook creates a QLORA adapter for the pretrained model from huggingface.co/leo-hessianai-mistral on the scraped data from berufslexikon.at
